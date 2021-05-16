@@ -22,7 +22,7 @@ Save the weight file generated during the training process:
 
     model.save_weights (WEIGHTS_DIR + str(epoch) + '.h5') 
 # Prediction
-The prediction code is stored in the predict.py file.`X_test = hkl.load(TEST_DIR)` loads the test set file,`model.load_weights(WEIGHTS_DIR)` loads the trained weight file.
+The prediction code is stored in the `predict.py` file.`X_test = hkl.load(TEST_DIR)` loads the test set file,`model.load_weights(WEIGHTS_DIR)` loads the trained weight file.
 Then through `test_predictImag() `functions respectively generate prediction data.Finally save the prediction data by: 
 
     hkl.dump(Preimage, PREDICT_DIR).
