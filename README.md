@@ -17,15 +17,10 @@ Save the weight files of the generator and the discriminator respectively:<br>
     d.save_weights(WEIGHTS_DIR+ ' Discriminator’+ str(epoch)+'.h5') 
 During the training process, the `compute_train_ssim()` function is responsible for generating and saving the comparison image of the training process, and displaying the training loss value.
 ## argcPrdNet
-Save the weight file generated during the training process:
-
-    model.save_weights (WEIGHTS_DIR + str(epoch) + '.h5') 
+The `saveimages()` function will save the contrast images that are constantly changing during the training process.`model.save_weights (WEIGHTS_DIR + str(epoch) + '.h5')`save the weight file generated during the training process.
 # Prediction
 The prediction code is stored in the predict.py file.`X_test = hkl.load(TEST_DIR)` loads the test set file,`model.load_weights(WEIGHTS_DIR)` loads the trained weight file.
-Then through `GanpredictMulImage()`and `test_predictImag() `functions respectively generate prediction data.<br>
-Finally save the prediction data by: 
-
-    hkl.dump(preimage, PREDICT_DIR).
+Then through `GanpredictMulImage()`and `test_predictImag() `functions respectively generate prediction data.Finally save the prediction data by `hkl.dump(preimage, PREDICT_DIR)`.
 # NOTE
 You can cite the GAN-argcPredNet model repository as follows:<br>
 https://github.com/LukaDoncic0/GAN-argcPredNET/edit/main/README.md<br>
