@@ -1,7 +1,7 @@
 # Description
 This paper introduces a Generative Adversarial Networks, GAN-argcPredNet, which can be used for radar-based precipitation nowcasting.
 This network is trained to be a prediction model that extrapolates the next 7 frames from the first 5 frames.<br><br>
-The source code for the GAN-argcPredNet model written using the Keras functional API is in the model.py file.
+The source code for the GAN-argcPredNet model written using the Keras functional API is in the `model.py` file.
 # GAN-argcPredNet
 This model references the depth coding structure of the prednetmodel proposed by bill-lotter, and is based on the rgcLSTM design idea of NellyElsayed.
 # Radar data
