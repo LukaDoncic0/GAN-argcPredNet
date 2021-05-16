@@ -28,7 +28,7 @@ Then through `test_predictImag() `functions respectively generate prediction dat
     hkl.dump(Preimage, PREDICT_DIR).
 # NOTE
 You can cite the GAN-argcPredNet model repository as follows:<br>
-https://github.com/LukaDoncic0/GAN-argcPredNET/edit/main/README.md<br>
+https://github.com/LukaDoncic0/GAN-argcPredNet<br>
 # Reference
 @article{elsayed2018reduced,<br><br>
 title={Reduced-Gate Convolutional LSTM Using Predictive Coding for Spatiotemporal Prediction},<br><br>
