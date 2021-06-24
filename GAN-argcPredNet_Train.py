@@ -89,6 +89,7 @@ class WGANGP():
         self.generator_model = Model(z_gen, valid)
         self.generator_model.compile(loss=wasserstein_loss, optimizer=adam_opt)
 
+        # argcPredNet Generator
     def build_generator(self):
         stack_sizes = (1, 128, 128, 256)
         R_stack_sizes = stack_sizes
@@ -105,16 +106,23 @@ class WGANGP():
         real_img = Lambda(simple_slice, output_shape=self.img_shape, arguments={'index': self.index})(noise)
         generated_images = Concatenate(axis=3)([real_img, result_img])
         return Model(noise, generated_images)
-
+    
+    #dual-channel Discriminator
     def build_critic(self):
         input = Input(shape=self.d_input_shape, name='d_model_input')
-        mix_con2d_layer1 = Conv2D(128, kernel_size=3, strides=2, input_shape= self.d_input_shape, padding="same")(input)
+        mix_con2d_layer1 = Conv2D(256, kernel_size=3, strides=2, input_shape= self.d_input_shape, padding="same")(input)
         mix_lre_layer1 = LeakyReLU(alpha=0.2)(mix_con2d_layer1)
 
-        mix_con2d_layer2 = Conv2D(64, kernel_size=3, strides=2, padding="same")(mix_lre_layer1)
+        mix_con2d_layer2 = Conv2D(128, kernel_size=3, strides=2, padding="same")(mix_lre_layer1)
         mix_lre_layer2 = LeakyReLU(alpha=0.2)(mix_con2d_layer2)
+        
+        mix_con2d_layer3 = Conv2D(64, kernel_size=3, strides=2, padding="same")(mix_lre_layer2)
+        mix_lre_layer3 = LeakyReLU(alpha=0.2)(mix_con2d_layer3)
+        
+        mix_con2d_layer4 = Conv2D(32, kernel_size=3, strides=2, padding="same")(mix_lre_layer3)
+        mix_lre_layer4 = LeakyReLU(alpha=0.2)(mix_con2d_layer4)
 
-        mix_flatten_layer = Flatten()(mix_lre_layer2)
+        mix_flatten_layer = Flatten()(mix_lre_layer4)
 
         mix_dense_layer1 = Dense(1024)(mix_flatten_layer)
         mix_dense_layer2 = Dense(1)(mix_dense_layer1)
