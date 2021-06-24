@@ -16,6 +16,7 @@ import keras.backend.tensorflow_backend as KTF
 
 class WGANGP():
     def __init__(self, img_rows, img_cols,):
+        # Training parameters
         self.img_rows = img_rows
         self.img_cols = img_cols
         self.channels = 1
@@ -159,14 +160,18 @@ class WGANGP():
                 self.generator.save_weights(weights_dir+'gen_weight'+epoch + '.h5')
                 self.critic.save_weights(weights_dir+'dis_weight' + epoch + '.h5')
 
-
+# Training parameters
 img_rows = 96
 img_cols = 96
-DATA_DIR = '/run/media/root/8TB/png[0]/layer[0]/'
 
-train_file = os.path.join(DATA_DIR, 'train.hkl')
-val_file = os.path.join(DATA_DIR, 'val.hkl')
+# Data files
+DATA_DIR = '/run/media/root/8TB/png[0]/layer[0]/'
+train_file = os.path.join(DATA_DIR, 'train.hkl')        # shape = (sequence_num,frames,img_rows, img_cols, channels)  The number of frames in each batch is 12
+val_file = os.path.join(DATA_DIR, 'val.hkl')            # shape = (one_sequence,frames,img_rows, img_cols, channels)
+
 Pic_dir = '/run/media/root/8TB/png[0]/train_result/train_image/'
 Weights_Dir = '/run/media/root/8TB/png[0]/train_result/weights/'
+
+# GAN-argcPredNet train
 wgan = WGANGP(img_rows, img_cols, )
 wgan.train(BATCH_SIZE=4, epochs=8, train_file=train_file, val_file=val_file, picsave_dir=Pic_dir, weights_dir=Weights_Dir, )
