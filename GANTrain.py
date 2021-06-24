@@ -14,12 +14,6 @@ from skimage.measure import compare_mse as mse
 from tensorflow.compat.v1 import ConfigProto,InteractiveSession
 import keras.backend.tensorflow_backend as KTF
 
-
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
-config = ConfigProto()
-config.gpu_options.per_process_gpu_memory_fraction = 0.99
-config.gpu_options.allow_growth = True
-KTF.set_session(tf.Session(config=config))
 class WGANGP():
     def __init__(self, img_rows, img_cols,):
         self.img_rows = img_rows
