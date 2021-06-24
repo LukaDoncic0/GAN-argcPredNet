@@ -20,7 +20,24 @@ latent_dim = (6,) + (img_rows, img_cols, channels)
 d_input_shape = (img_rows, img_cols, 2)
 BATCH_SIZE = 10
 nt = 6
+# Model parameters
+stack_sizes = (1, 128, 128, 256)
+R_stack_sizes = stack_sizes
+A_filt_sizes = (3, 3, 3)
+Ahat_filt_sizes = (3, 3, 3, 3)
+R_filt_sizes = (3, 3, 3, 3)
 
+#Build argcPredNet
+def build_argcPredNet(nt, img_rows, img_cols):
+    input_shape = (img_rows, img_cols, 1)
+    prednet = Argc_PredNet(stack_sizes, R_stack_sizes,
+                      A_filt_sizes, Ahat_filt_sizes, R_filt_sizes,
+                      output_mode='prediction', return_sequences=True)
+    inputs = Input(shape=(nt,) + input_shape)
+    prediction = prednet(inputs)
+    model = Model(input=inputs, output=prediction)
+    model.compile(loss=extrap_loss, optimizer='adam')
+    return model
 
 
 # argcPredNet train
