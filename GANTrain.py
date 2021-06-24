@@ -160,8 +160,8 @@ class WGANGP():
                 self.critic.save_weights(weights_dir+'dis_weight' + epoch + '.h5')
 
 
-img_rows = 234
-img_cols = 188
+img_rows = 96
+img_cols = 96
 DATA_DIR = '/run/media/root/8TB/png[0]/layer[0]/'
 
 train_file = os.path.join(DATA_DIR, 'train.hkl')
