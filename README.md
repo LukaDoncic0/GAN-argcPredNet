@@ -1,5 +1,5 @@
 # Description
-This paper introduces a Generative Adversarial Networks, GAN-argcPredNet, which can be used for radar-based precipitation nowcasting.<br><br>
+This paper introduces a Generative Adversarial Networks, GAN-argcPredNet v1.0, which can be used for radar-based precipitation nowcasting.<br><br>
 The  generator is stored in the `argc_PredNet.py file`, and the completion process of building GAN-argcPredNet is in the `GAN-argcPredNet_Train.py` file.<br><br>
 This network is trained to be a prediction model that extrapolates the next 7 frames from the first 5 frames.<br><br>
 
