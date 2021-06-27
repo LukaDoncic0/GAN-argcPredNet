@@ -4,21 +4,20 @@ The  generator is stored in the `argc_PredNet.py file`, and the completion proce
 This network is trained to be a prediction model that extrapolates the next 7 frames from the first 5 frames.<br><br>
 
 
-# GAN-argcPredNet
+# GAN-argcPredNet v1.0
 This model references the depth coding structure of the prednetmodel proposed by [bill-lotter](https://github.com/coxlab/prednet), and is based on the rgcLSTM design idea of [NellyElsayed](https://github.com/NellyElsayed/rgcLSTM).We modified the recurrent unit in the network and used it as a generator.In addition, a two-channel input network with four layers of convolution is the discriminator of GAN-argcPredNet.<br><br>
 ![image](https://github.com/LukaDoncic0/GAN-argcPredNet/blob/main/png/model.tif)
 
 # Radar data
-The experimental data is the radar puzzle data of Shenzhen area provided by Guangdong Meteorological Bureau. It does not support the open sharing.
+The experimental data is the radar mosaic of Shenzhen area provided by Guangdong Meteorological Bureau. It does not support the open sharing.For data access, please contact Kun Zheng (ZhengK@cug.edu.cn) and Yan Liu (liuyan_@cug.edu.cn).
 # Train
-Train.py is our training file. This step will train the network into a model that is extrapolated from 5 frames to 7 frames. This includes the training of argcPrdNet and GAN-argcPredNet two networks.
+The files of the training model are stored in the `GAN-argcPredNet_Train.py` and `argcPredNet_Train.py` files. The advantages of GAN-argcPredNet can be seen through the training experiments on these two models.
 ## GAN-argcPredNet
 Save the weight files of the generator and the discriminator respectively:<br>
 
-
-    g.save_weights(WEIGHTS_DIR+ 'Generator’+ str(epoch)+'.h5') 
+    self.generator.save_weights(weights_dir+'gen_weight'+epoch + '.h5')
     
-    d.save_weights(WEIGHTS_DIR+ ' Discriminator’+ str(epoch)+'.h5') 
+    self.critic.save_weights(weights_dir+'dis_weight' + epoch + '.h5')
 During the training process, the `compute_train_ssim()` function is responsible for generating and saving the comparison image of the training process, and displaying the training loss value.
 ## argcPrdNet
 The `Saveimages()` function will save the contrast images that are constantly changing during the training process.
