@@ -6,6 +6,7 @@ This network is trained to be a prediction model that extrapolates the next 7 fr
 
 # GAN-argcPredNet
 This model references the depth coding structure of the prednetmodel proposed by [bill-lotter](https://github.com/coxlab/prednet), and is based on the rgcLSTM design idea of [NellyElsayed](https://github.com/NellyElsayed/rgcLSTM).We modified the recurrent unit in the network and used it as a generator.In addition, a two-channel input network with four layers of convolution is the discriminator of GAN-argcPredNet.<br><br>
+![image](https://github.com/LukaDoncic0/GAN-argcPredNet/blob/main/png/model.tif)
 
 # Radar data
 The experimental data is the radar puzzle data of Shenzhen area provided by Guangdong Meteorological Bureau. It does not support the open sharing.
